@@ -22,6 +22,9 @@ export default class CompanyService {
                 // ----------------- This does not work -------------------
                 let query: string = "";
                 try {
+                    // This method returns next string:
+                    // "SELECT * FROM `companies` WHERE Name LIKE '%Пиво%' AND Rate >= 3 AND Id IN (SELECT `CompanyId` FROM `companydishtypes` WHERE DishTypeId IN (1, 2, 3)) ORDER BY `Rate` DESC, `Name` ASC LIMIT 5"
+                    // You can see this in the debug mode.
                     query = queryBuilder.GetQuery("companies", filter);
                 } catch (error) {
                     deferred.reject(error);
@@ -31,7 +34,7 @@ export default class CompanyService {
 
 
                 // ----------------- But this works perfect --------------
-                // If copy value from queryBuilder.GetQuery("companies", filter) and paste to the query.
+                // If copy value from queryBuilder.GetQuery("companies", filter) and paste to the query method.
                 // let query: string = "SELECT * FROM `companies` WHERE Name LIKE '%Пиво%' AND Rate >= 3 AND Id IN (SELECT `CompanyId` FROM `companydishtypes` WHERE DishTypeId IN (1, 2, 3)) ORDER BY `Rate` DESC, `Name` ASC LIMIT 5";
                 // -------------------------------------------------------
 
