@@ -1,0 +1,10 @@
+{
+    "DBConnection": {
+        "PoolSize": 100,
+        "Host": "localhost",
+        "Port": "3306",
+        "Database": "food-delivery",
+        "User": "root",
+        "Password": "pass2sql@"
+    }
+}
