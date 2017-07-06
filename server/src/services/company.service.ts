@@ -18,7 +18,8 @@ export default class CompanyService {
                 deferred.reject(error);
             }
             else {
-                // ----------------- It's not works -----------------------
+
+                // ----------------- This does not work -------------------
                 let query: string = "";
                 try {
                     query = queryBuilder.GetQuery("companies", filter);
@@ -27,9 +28,12 @@ export default class CompanyService {
                 }
                 // -------------------------------------------------------
 
-                // -----------------But it's works perfect ----------------
+
+
+                // ----------------- But this works perfect --------------
                 // If copy value from queryBuilder.GetQuery("companies", filter) and paste to the query.
                 // let query: string = "SELECT * FROM `companies` WHERE Name LIKE '%Пиво%' AND Rate >= 3 AND Id IN (SELECT `CompanyId` FROM `companydishtypes` WHERE DishTypeId IN (1, 2, 3)) ORDER BY `Rate` DESC, `Name` ASC LIMIT 5";
+                // -------------------------------------------------------
 
                 connection.query(query, function (error: mysql.QueryError, results: mysql.RowDataPacket[], fields: mysql.FieldPacket[]) {
                     connection.release();
